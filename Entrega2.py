@@ -1,7 +1,7 @@
 import random 
 import turtle               # Usa a biblioteca de turtle graphics
 window = turtle.Screen()    # cria uma janela
-window.bgcolor("red")    # Muda a cor do fundo
+window.bgcolor("red")       # Muda a cor do fundo
 window.title("Poligonos")
 window.setup(width=1240,height=800,startx=-0,starty=000)
 tartaruga   = turtle.Turtle()  # Cria um objeto "desenhador"
@@ -134,8 +134,6 @@ while x <len(palavra_escolhida)-1:
      espaco()
     x+=1
 
-
-
 resposta=1    
 tartaruga.pensize(2)
 erros = 0
@@ -180,11 +178,8 @@ while erros<6:
         resposta = resposta + 1
      
  if resposta==len(palavra_escolhida):
-     break
- 
-        
+     break       
 tartaruga.hideturtle
 print(resposta)
-print(erros) 
-      
+print(erros)       
 window.exitonclick()
