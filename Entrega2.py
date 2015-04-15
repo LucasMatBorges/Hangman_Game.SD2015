@@ -188,5 +188,3 @@ print(resposta)
 print(erros) 
       
 window.exitonclick()
-
-
