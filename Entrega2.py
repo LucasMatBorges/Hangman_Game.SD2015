@@ -1,118 +1,88 @@
 import random 
-import turtle               # Usa a biblioteca de turtle graphics
-window = turtle.Screen()    # cria uma janela
-window.bgcolor("red")       # Muda a cor do fundo
-window.title("Poligonos")
-window.setup(width=1240,height=800,startx=-0,starty=000)
-tartaruga   = turtle.Turtle()  # Cria um objeto "desenhador"
-tartaruga.penup()
-tartaruga.setpos(-250,250)
+import turtle                           # Usa a biblioteca de turtle graphics
+window = turtle.Screen()                # cria uma janela
+window.bgcolor("red")                   # Muda a cor do fundo
+window.title("Jogo da Forca")           # Título da janela
+window.setup(width=1240,height=800,startx=-0,starty=000) #Define o tamanho da janela 
+tartaruga = turtle.Turtle()  # Cria um objeto "desenhador" e atribui um nome
+tartaruga.penup() # Levanta a caneta
+tartaruga.setpos(-250,250) # Define a posição inicial
+tartaruga.pendown() # Abaixa a caneta
+tartaruga.color("black") # Muda a cor que vai ser escrita
+tartaruga.write("Jogo da Forca", align = "left", font = ("arial", 40, "normal")) #Define a fonte 
+tartaruga.speed(5) # Define a velocidade
+tartaruga.penup() # Remova e veja o que acontece
+tartaruga.setpos(-600,0) # Base da forca
 tartaruga.pendown()
-tartaruga.color("black")
-tartaruga.write("Jogo da Forca", align = "left", font = ("arial", 40, "normal"))
-tartaruga.speed(5)  # define a velocidade
-tartaruga.penup()       # Remova e veja o que acontece
-tartaruga.setpos(-600,0) #Base da forca
-tartaruga.pendown()
-tartaruga.color("white") #Define a cor da tartaruga
-#dist = 250
-#angulo = 90
-
-#for i in range(3):
-  #  tartaruga.right(angulo)  # Vira o angulo pedido
-    #tartaruga.forward(dist) # Avança a distancia pedida
-tartaruga.pensize(6)
-tartaruga.left(90)
-tartaruga.forward(250)
-tartaruga.right(90)
-tartaruga.forward(100)
+tartaruga.color("white") # Define a cor da tartaruga
+tartaruga.pensize(6) # Espessura da linha desenhada
+tartaruga.left(90) # Virar para esquerda
+tartaruga.forward(250) # Ir para frente
+tartaruga.right(90) # Virar para direita
+tartaruga.forward(100) 
 tartaruga.right(90)
 tartaruga.forward(50)
 
-a=tartaruga.pos() #mostra a posição que a tartaruga parou
-print(a) 
+print(tartaruga.pos()) # Mostra a posição que a tartaruga parou
 
-
-def cabeca():
+def cabeca(): # Desenha a cabeça
         tartaruga.penup()        
         tartaruga.setpos(-500,100)
         tartaruga.pendown()
         tartaruga.circle(-50)
-#==============================================================================
-# cabeca()
-#==============================================================================
 
-def corpo():
+def corpo(): # Desenha o corpo
         tartaruga.penup()        
         tartaruga.setpos(-500,100)
         tartaruga.left(90)        
         tartaruga.pendown()
         tartaruga.bk(-50)
-#==============================================================================
-# corpo()
-#==============================================================================
 
-def braco1():
+def braco1(): # Desenha o braço 1
         tartaruga.penup()        
         tartaruga.setpos(-500,75)
         tartaruga.pendown()
         tartaruga.right(45)
         tartaruga.bk(-25)
-#==============================================================================
-# braco1()
-#==============================================================================
 
-def braco2():
+def braco2(): # Desenha o braço 2
         tartaruga.penup()        
         tartaruga.setpos(-500,75)
         tartaruga.pendown()
         tartaruga.left(90)
         tartaruga.bk(-25)
-#==============================================================================
-# braco2()
-#==============================================================================
 
-def perna1():
+def perna1(): # Desenha a perna 1
         tartaruga.penup()        
         tartaruga.setpos(-500,50)
         tartaruga.pendown()
         tartaruga.left(5)
         tartaruga.bk(-25)
-#==============================================================================
-# perna1()
-#==============================================================================
 
-def perna2():
+def perna2(): # Desenha a perna 2
         tartaruga.penup()        
         tartaruga.setpos(-500,50)
         tartaruga.pendown()
         tartaruga.right(-90)
         tartaruga.bk(25)
-#==============================================================================
-# perna2()
-#==============================================================================
 
-a1=tartaruga.pos() #mostra a posição que a tartaruga parou
-print(a1) 
-#a = window.textinput("Texto", "Digite a letra")
-f = open("entrada.txt","r", encoding="utf-8")
-palavra = f.readlines()
-palavra_escolhida1 = random.choice(palavra)
-palavra_escolhida = palavra_escolhida1.upper()
-print(palavra_escolhida)
+f = open("entrada.txt","r", encoding="utf-8") # Abre o arquivo com as palavras da forca
+palavra = f.readlines() # Lê todas as linhas do arquivo
+palavra_escolhida1 = random.choice(palavra) # Escolhe alguma palavra do arquivo
+palavra_escolhida = palavra_escolhida1.upper() # Deixa todas as letras da palavra em maiscúla
+print(palavra_escolhida) # Printa na tela a palavra escolhida
 
-def linha():
+def linha(): # Linha que deve substituir cada letra
     tartaruga.pendown()
     tartaruga.left(0)
-    tartaruga.bk(50)
-   # tartaruga.write(l)
+    tartaruga.bk(50) # Ir para trás
     
-def espaco():
+def espaco(): # Espaço entre as letras
     tartaruga.penup()        
     tartaruga.left(0)
     tartaruga.bk(25)
 
-def espaco2():
+def espaco2(): # Caso a palavra seja composta
     tartaruga.penup()        
     tartaruga.left(0)
     tartaruga.bk(50)
@@ -142,8 +112,7 @@ while erros<6:
  chute = chute1.upper()
  
  if chute in L:    
-    print("Legal")
-    
+    print("Legal") 
  else: 
     erros = erros + 1 
     tartaruga.penup()
@@ -182,4 +151,4 @@ while erros<6:
 tartaruga.hideturtle
 print(resposta)
 print(erros)       
-window.exitonclick()
+window.exitonclick() # Fecha a janela ao clicar sobre ela
